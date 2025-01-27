@@ -34,7 +34,8 @@ const createDocument = asyncHandler(async (req, res) => {
 //@route PUT /api/v1/document/:id
 //@access admin only
 const updateDocument = asyncHandler(async (req, res) => {
-  const { id, title, description, approval } = req.body;
+  const { id } = req.params;
+  const { title, description, approval } = req.body;
   const document = await Document.findByIdAndUpdate(
     id,
     { title, description, approval },
