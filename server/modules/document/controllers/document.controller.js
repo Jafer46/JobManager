@@ -53,4 +53,10 @@ const deleteDocument = asyncHandler(async (req, res) => {
   res.status(OK).json(document);
 });
 
-module.exports = { getDocuments, getDocument, createDocument, deleteDocument };
+module.exports = {
+  getDocuments,
+  getDocument,
+  createDocument,
+  updateDocument,
+  deleteDocument,
+};

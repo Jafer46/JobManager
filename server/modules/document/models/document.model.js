@@ -14,7 +14,11 @@ const documentSchema = mongoose.Schema(
       {
         stage: { type: String },
         statusTo: { type: String },
-        approvalBy: { type: mongoose.Types.ObjectId, ref: "User" },
+        approvalBy: {
+          type: mongoose.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
       },
     ],
   },
