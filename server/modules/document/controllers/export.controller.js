@@ -1,13 +1,23 @@
 const excelJS = require("exceljs");
 const { getModelAttributes } = require("../../../utils/model.manager");
+const {
+  default: { BAD_REQUEST },
+} = require("../../../constants/statuscode.names");
+const asyncHandler = require("express-async-handler");
 
-const exportData = async (req, res) => {
+const exportData = asyncHandler(async (req, res) => {
+  console.log(req.body);
   const { modelName, idList } = req.body;
+  if (!modelName) {
+    res.status(BAD_REQUEST);
+    throw new Error("Model name is required");
+  }
   const workbook = new excelJS.Workbook(); // Create a new workbook
   const worksheet = workbook.addWorksheet("My Users"); // New Worksheet
   const path = "./files"; // Path to download excel
 
   const { attributes, model } = getModelAttributes(modelName);
+  console.log(attributes);
 
   const columns = attributes.map((item) => ({
     header: item.name,
@@ -65,11 +75,9 @@ const exportData = async (req, res) => {
       });
     })
     .catch((err) => {
-      res.send({
-        status: "error",
-        message: "Something went wrong",
-      });
+      res.status(BAD_REQUEST);
+      throw new Error("Model Not found");
     });
-};
+});
 
 module.exports = exportData;
