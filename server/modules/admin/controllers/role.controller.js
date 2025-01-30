@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const Role = require("../models/role");
+const Role = require("../models/role.model");
 
 //@desc get all roles
 //@route GET /api/v1/roles
