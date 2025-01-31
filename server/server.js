@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 dbConnection();
 
 app.use(express.json());
-// app.use(cors());
+//app.use(cors());
 // app.use(express.urlencoded({ extended: true }));
 //app.use("/api", require("./router"));
 app.use("/api/export", require("./modules/document/routes/export.route"));

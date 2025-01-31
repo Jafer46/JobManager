@@ -1,7 +1,6 @@
 export default {
-  User: "users",
-  Role: "roles",
-  Admin: "admins",
-  Job: "jobs",
-  Contact: "contacts",
+  User: "user",
+  Role: "role",
+  Job: "job",
+  Contact: "contact",
 };
